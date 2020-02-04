@@ -9,6 +9,13 @@ pipeline {
             }
             steps {
                 echo 'Prepare'
+                dir('code/frontend'){
+                     sh 'npm install'
+                }
+                dir('code/backend'){
+                     sh 'npm install'
+                }
+
             }
         }
         stage('Build') {
@@ -17,6 +24,12 @@ pipeline {
             }
             steps {
                 echo 'Build'      
+                dir('code/frontend'){
+                     sh 'docker-compose -f docker-compose.yml build'
+                }
+                dir('code/backend'){
+                    sh 'docker-compose -f docker-compose.yml build'
+                }
             }
         }
         stage('Static Analysis') {
