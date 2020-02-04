@@ -25,10 +25,10 @@ pipeline {
             steps {
                 echo 'Build'      
                 dir('code/frontend'){
-                     sh 'docker-compose -f docker-compose.yml build'
+                     sh 'npm run build'
                 }
                 dir('code/backend'){
-                    sh 'docker-compose -f docker-compose.yml build'
+                    sh 'npm run build'
                 }
             }
         }
